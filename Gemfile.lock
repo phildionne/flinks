@@ -132,6 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (>= 3.0)
   bundler (~> 1.0)
   dry-validation (~> 0.11)
   http

@@ -1,3 +1,4 @@
+require 'active_support/core_ext/hash/indifferent_access'
 require 'flinks/version'
 
 module Flinks
@@ -19,7 +20,7 @@ module Flinks
     end
 
     def options
-      Hash[ * VALID_OPTIONS_KEYS.map { |key| [key, send(key)] }.flatten ]
+      ActiveSupport::HashWithIndifferentAccess[ * VALID_OPTIONS_KEYS.map { |key| [key, send(key)] }.flatten ]
     end
 
     def reset!
