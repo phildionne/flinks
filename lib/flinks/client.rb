@@ -1,7 +1,11 @@
+require 'dry-validation'
+
 require 'flinks/request'
+require 'flinks/api/account'
 module Flinks
   class Client
     include Flinks::Request
+    include Flinks::API::Account
 
     attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
