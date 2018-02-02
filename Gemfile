@@ -5,6 +5,7 @@ source "https://rubygems.org"
 
 gem 'http'
 gem 'dry-validation', '~> 0.11'
+gem 'dry-initializer'
 gem 'activesupport', '>= 3.0'
 
 # Add dependencies to develop your gem here.

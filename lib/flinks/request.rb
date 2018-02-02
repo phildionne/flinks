@@ -39,7 +39,7 @@ module Flinks
 
       headers = {
         'Accept'     => "application/json",
-        'User-Agent' => Flinks.user_agent
+        'User-Agent' => user_agent
       }
 
       response = Http.headers(headers).send(method, path, params: params, json: body.transform_keys(&:camelize))
