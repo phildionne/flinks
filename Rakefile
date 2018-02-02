@@ -16,28 +16,27 @@ Juwelier::Tasks.new do |gem|
   gem.name = "flinks"
   gem.homepage = "http://github.com/phildionne/flinks"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Flinks API client}
+  gem.description = %Q{Flinks financial services API client}
   gem.email = "dionne.phil@gmail.com"
   gem.authors = ["Philippe Dionne"]
 
   # dependencies defined in Gemfile
 end
 Juwelier::RubygemsDotOrgTasks.new
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+require 'rspec/core'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
 desc "Code coverage detail"
 task :simplecov do
   ENV['COVERAGE'] = "true"
-  Rake::Task['test'].execute
+  Rake::Task['spec'].execute
 end
 
-task :default => :test
+task :default => :spec
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
