@@ -4,12 +4,15 @@ require 'flinks/request'
 require 'flinks/api/account'
 require 'flinks/api/card'
 require 'flinks/api/refresh'
+require 'flinks/api/statement'
+
 module Flinks
   class Client
     include Flinks::Request
     include Flinks::API::Account
     include Flinks::API::Card
     include Flinks::API::Refresh
+    include Flinks::API::Statement
 
     attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
