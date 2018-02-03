@@ -1,5 +1,7 @@
 require 'http'
 
+require 'flinks/error'
+
 module Flinks
   module Request
 
@@ -50,11 +52,7 @@ module Flinks
 
       # Pass on errors when HTTP status included in 400 to 599
       if (400..599).include?(response.code)
-        begin
-          body = response.parse['error']
-        rescue HTTP::Error
-          body = nil
-        end
+        raise Error.from_response(response)
 
         on_error.call(response.code, response.reason, body)
       end
