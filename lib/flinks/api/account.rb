@@ -40,7 +40,7 @@ module Flinks
       # @return [Hash]
       def accounts_summary(request_id:, options: {})
         payload = AccountSummaryRequestSchema.call(options.merge(request_id: request_id))
-        raise Error, payload.messages.first unless payload.success?
+        raise ArgumentError, payload.messages.first unless payload.success?
 
         post("#{customer_id}/BankingServices/GetAccountsSummary", body: payload.to_h)
       end
@@ -51,7 +51,7 @@ module Flinks
       # @return [Hash]
       def accounts_detail(request_id:, options: {})
         payload = AccountDetailRequestSchema.call(options.merge(request_id: request_id))
-        raise Error, payload.messages.first unless payload.success?
+        raise ArgumentError, payload.messages.first unless payload.success?
 
         post("#{customer_id}/BankingServices/GetAccountsDetail", body: payload.to_h)
       end
