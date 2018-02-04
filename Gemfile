@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem 'http'
+gem 'http', '~> 3.0'
 gem 'dry-validation', '~> 0.11'
 gem 'dry-initializer', '~> 2.4'
 gem 'activesupport', '>= 3.0'
