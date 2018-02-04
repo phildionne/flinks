@@ -35,10 +35,8 @@ module Flinks
     private
 
     # @return [HTTP::Client]
-    # @raise [ArgumentError]
+    # @raise [Flinks::Error]
     def request(method, path, params: {}, body: {})
-      raise ArgumentError, ("Please configure Flinks.customer_id first") if customer_id.nil? || customer_id.empty?
-
       headers = {
         'Accept'     => "application/json",
         'User-Agent' => user_agent
