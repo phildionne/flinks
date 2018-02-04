@@ -5,6 +5,7 @@ source "https://rubygems.org"
 
 gem 'http', '~> 3.0'
 gem 'dry-validation', '~> 0.11'
+gem 'dry-inflector', '~> 0.1'
 gem 'dry-initializer', '~> 2.4'
 gem 'activesupport', '>= 3.0'
 
