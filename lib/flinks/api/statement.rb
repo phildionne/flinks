@@ -9,10 +9,9 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-pdf-statements
-      # @param request_id [String]
       # @param options [Hash]
       # @return [Hash]
-      def statements(request_id:, options: {})
+      def statements(options: {})
         payload = StatementRequestSchema.call(options)
         raise Error, payload.messages.first unless payload.success?
 

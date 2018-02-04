@@ -62,11 +62,11 @@ flinks = Flinks.new({
 
 - `activate_scheduled_refresh(login_id:)`
 - `deactivate_scheduled_refresh(login_id:)`
-- `set_scheduled_refresh(login_id:)`
+- `set_scheduled_refresh(activated, login_id:)`
 
 #### Statement
 
-- `statements(request_id:, options:)`
+- `statements(options:)`
 - `statements_async(request_id:)`
 
 ## Documentation
