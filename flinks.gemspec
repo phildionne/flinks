@@ -11,55 +11,86 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Philippe Dionne".freeze]
-  s.date = "2018-02-02"
+  s.date = "2018-02-05"
   s.description = "Flinks financial services API client".freeze
   s.email = "dionne.phil@gmail.com".freeze
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
-    "lib/flinks.rb"
+    "flinks.gemspec",
+    "lib/flinks.rb",
+    "lib/flinks/api/account.rb",
+    "lib/flinks/api/card.rb",
+    "lib/flinks/api/refresh.rb",
+    "lib/flinks/api/statement.rb",
+    "lib/flinks/client.rb",
+    "lib/flinks/error.rb",
+    "lib/flinks/request.rb",
+    "lib/flinks/version.rb",
+    "spec/lib/api/account.rb",
+    "spec/lib/api/card.rb",
+    "spec/lib/api/refresh.rb",
+    "spec/lib/api/statement.rb",
+    "spec/lib/client_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/phildionne/flinks".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "2.6.13".freeze
+  s.rubygems_version = "2.7.3".freeze
   s.summary = "Flinks API client".freeze
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<http>.freeze, [">= 0"])
+      s.add_runtime_dependency(%q<http>.freeze, ["~> 3.0"])
       s.add_runtime_dependency(%q<dry-validation>.freeze, ["~> 0.11"])
+      s.add_runtime_dependency(%q<dry-inflector>.freeze, ["~> 0.1"])
+      s.add_runtime_dependency(%q<dry-initializer>.freeze, ["~> 2.4"])
+      s.add_runtime_dependency(%q<activesupport>.freeze, [">= 3.0"])
+      s.add_development_dependency(%q<rspec>.freeze, [">= 0"])
       s.add_development_dependency(%q<shoulda>.freeze, [">= 0"])
       s.add_development_dependency(%q<rdoc>.freeze, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>.freeze, ["~> 1.0"])
       s.add_development_dependency(%q<juwelier>.freeze, ["~> 2.1.0"])
       s.add_development_dependency(%q<simplecov>.freeze, [">= 0"])
+      s.add_development_dependency(%q<webmock>.freeze, [">= 0"])
     else
-      s.add_dependency(%q<http>.freeze, [">= 0"])
+      s.add_dependency(%q<http>.freeze, ["~> 3.0"])
       s.add_dependency(%q<dry-validation>.freeze, ["~> 0.11"])
+      s.add_dependency(%q<dry-inflector>.freeze, ["~> 0.1"])
+      s.add_dependency(%q<dry-initializer>.freeze, ["~> 2.4"])
+      s.add_dependency(%q<activesupport>.freeze, [">= 3.0"])
+      s.add_dependency(%q<rspec>.freeze, [">= 0"])
       s.add_dependency(%q<shoulda>.freeze, [">= 0"])
       s.add_dependency(%q<rdoc>.freeze, ["~> 3.12"])
       s.add_dependency(%q<bundler>.freeze, ["~> 1.0"])
       s.add_dependency(%q<juwelier>.freeze, ["~> 2.1.0"])
       s.add_dependency(%q<simplecov>.freeze, [">= 0"])
+      s.add_dependency(%q<webmock>.freeze, [">= 0"])
     end
   else
-    s.add_dependency(%q<http>.freeze, [">= 0"])
+    s.add_dependency(%q<http>.freeze, ["~> 3.0"])
     s.add_dependency(%q<dry-validation>.freeze, ["~> 0.11"])
+    s.add_dependency(%q<dry-inflector>.freeze, ["~> 0.1"])
+    s.add_dependency(%q<dry-initializer>.freeze, ["~> 2.4"])
+    s.add_dependency(%q<activesupport>.freeze, [">= 3.0"])
+    s.add_dependency(%q<rspec>.freeze, [">= 0"])
     s.add_dependency(%q<shoulda>.freeze, [">= 0"])
     s.add_dependency(%q<rdoc>.freeze, ["~> 3.12"])
     s.add_dependency(%q<bundler>.freeze, ["~> 1.0"])
     s.add_dependency(%q<juwelier>.freeze, ["~> 2.1.0"])
     s.add_dependency(%q<simplecov>.freeze, [">= 0"])
+    s.add_dependency(%q<webmock>.freeze, [">= 0"])
   end
 end
 
