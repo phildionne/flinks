@@ -1,7 +1,7 @@
 module Flinks
   module API
     module Refresh
-
+      
       # @see https://sandbox-api.flinks.io/Readme/#scheduling-background-refresh
       # @param login_id [String]
       # @return [Hash]

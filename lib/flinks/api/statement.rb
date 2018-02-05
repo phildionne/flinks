@@ -1,6 +1,7 @@
 module Flinks
   module API
     module Statement
+
       StatementRequestSchema = Dry::Validation.Schema do
         optional(:accounts_filter).each(:str?)
         optional(:number_of_statements).included_in?(['MostRecent', 'Months3', 'Months12'])

@@ -13,6 +13,7 @@ require 'flinks/api/statement'
 module Flinks
   class Client
     extend Dry::Initializer
+
     include Flinks::Request
     include Flinks::API::Account
     include Flinks::API::Card
