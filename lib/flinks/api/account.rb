@@ -22,8 +22,8 @@ module Flinks
         optional(:date_to) { date? | date_time? }
         optional(:accounts_filter).each(:str?)
 
-        optional(:refresh_delta).schema do
-          each do
+        optional(:refresh_delta).each do
+          schema do
             required(:account_id).filled(:str?)
             required(:transaction_id).filled(:str?)
           end
