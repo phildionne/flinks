@@ -1,3 +1,5 @@
+require 'active_support'
+require 'active_support/core_ext/object'
 require 'dry-initializer'
 require 'dry-validation'
 
