@@ -5,6 +5,7 @@ require 'dry-initializer'
 require 'flinks/version'
 require 'flinks/request'
 require 'flinks/api/account'
+require 'flinks/api/authorize'
 require 'flinks/api/card'
 require 'flinks/api/refresh'
 require 'flinks/api/statement'
@@ -15,6 +16,7 @@ module Flinks
 
     include Flinks::Request
     include Flinks::API::Account
+    include Flinks::API::Authorize
     include Flinks::API::Card
     include Flinks::API::Refresh
     include Flinks::API::Statement
