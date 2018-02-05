@@ -13,7 +13,7 @@ module Flinks
       # @return [Hash]
       def statements(options: {})
         payload = StatementRequestSchema.call(options)
-        raise Error, payload.messages.first unless payload.success?
+        raise ArgumentError, error_message(payload) unless payload.success?
 
         post("#{customer_id}/BankingServices/GetStatements", body: payload.to_h)
       end

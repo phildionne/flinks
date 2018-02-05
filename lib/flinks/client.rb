@@ -24,5 +24,12 @@ module Flinks
     option :user_agent,   default: proc { "Flinks Ruby Gem #{Flinks::VERSION}" }
     option :on_error,     default: proc { proc {} }
     option :debug,        default: proc { false }
+
+    #
+    # @param validation [Dry::Validation::Result]
+    # @return [String]
+    def error_message(validation)
+      validation.messages(full: true).values.flatten.to_sentence
+    end
   end
 end
