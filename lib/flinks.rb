@@ -1,7 +1,7 @@
 require 'flinks/client'
 
 module Flinks
-  
+
   # Alias for Flinks::Client.new
   #
   # @return [Flinks::Client]
