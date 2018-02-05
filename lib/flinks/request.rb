@@ -42,7 +42,11 @@ module Flinks
         'User-Agent' => user_agent
       }
 
-      response = Http.headers(headers).send(method, path, params: params, json: body.transform_keys(&:camelize))
+      # Build payload
+      payload = body.transform_keys { |k| k.to_s.camelize }
+
+      # Perform request
+      response = Http.headers(headers).send(method, path, params: params, json: payload)
 
       if debug
         p response
