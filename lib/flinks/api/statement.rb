@@ -1,3 +1,5 @@
+require 'dry-validation'
+
 module Flinks
   module API
     module Statement

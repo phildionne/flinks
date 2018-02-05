@@ -1,24 +1,26 @@
+require 'dry-validation'
+
 module Flinks
   module API
     module Account
       AccountSummaryRequestSchema = Dry::Validation.Schema do
         required(:request_id).filled(:str?)
-        optional(:direct_refresh).maybe(:bool?)
-        optional(:with_balance).maybe(:bool?)
-        optional(:with_transactions).maybe(:bool?)
-        optional(:with_account_identity).maybe(:bool?)
-        optional(:most_recent).maybe(:bool?)
-        optional(:most_recent_cached).maybe(:bool?)
+        optional(:direct_refresh).filled(:bool?)
+        optional(:with_balance).filled(:bool?)
+        optional(:with_transactions).filled(:bool?)
+        optional(:with_account_identity).filled(:bool?)
+        optional(:most_recent).filled(:bool?)
+        optional(:most_recent_cached).filled(:bool?)
       end
 
       AccountDetailRequestSchema = Dry::Validation.Schema do
         required(:request_id).filled(:str?)
-        optional(:with_account_identity).maybe(:bool?)
-        optional(:with_kyc).maybe(:bool?)
-        optional(:with_transactions).maybe(:bool?)
-        optional(:with_balance).maybe(:bool?)
-        optional(:get_mfa_questions_answers).maybe(:bool?)
-        optional(:date_from).maybe(:date?)
+        optional(:with_account_identity).filled(:bool?)
+        optional(:with_kyc).filled(:bool?)
+        optional(:with_transactions).filled(:bool?)
+        optional(:with_balance).filled(:bool?)
+        optional(:get_mfa_questions_answers).filled(:bool?)
+        optional(:date_from).filled(:date?)
         optional(:date_to) { date? | date_time? }
         optional(:accounts_filter).each(:str?)
 
@@ -30,8 +32,8 @@ module Flinks
         end
 
         optional(:days_of_transactions).included_in?(['Days90', 'Days360'])
-        optional(:most_recent).maybe(:bool?)
-        optional(:most_recent_cached).maybe(:bool?)
+        optional(:most_recent).filled(:bool?)
+        optional(:most_recent_cached).filled(:bool?)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-summary
