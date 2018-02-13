@@ -2,7 +2,7 @@
 
 A ruby client for the [Flinks](https://flinks.io) API.
 
-[![Dependency Status](https://gemnasium.com/badges/github.com/phildionne/flinks.svg)](https://gemnasium.com/github.com/phildionne/flinks)
+[![Build Status](https://travis-ci.org/phildionne/flinks.svg?branch=master)](https://travis-ci.org/phildionne/flinks)
 [![Gem Version](https://badge.fury.io/rb/flinks.svg)](https://badge.fury.io/rb/flinks)
 
 ## Installation
