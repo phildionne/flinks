@@ -75,6 +75,12 @@ flinks = Flinks.new({
 
 See the [API docs](https://sandbox-api.flinks.io).
 
+## Supported Ruby versions
+
+- MRI 2.3
+- MRI 2.4
+- MRI 2.5
+
 ## Development
 
 Run all tests:
