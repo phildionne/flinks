@@ -2,7 +2,6 @@ require 'active_support'
 require 'active_support/core_ext/object'
 require 'dry-initializer'
 
-require 'flinks/version'
 require 'flinks/request'
 require 'flinks/api/account'
 require 'flinks/api/authorize'
@@ -23,7 +22,7 @@ module Flinks
 
     option :customer_id
     option :api_endpoint, default: proc { "https://sandbox.flinks.io/v3/" }
-    option :user_agent,   default: proc { "Flinks Ruby Gem #{Flinks::VERSION}" }
+    option :user_agent,   default: proc { "Flinks Ruby Gem" }
     option :on_error,     default: proc { proc {} }
     option :debug,        default: proc { false }
 
