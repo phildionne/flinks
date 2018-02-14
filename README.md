@@ -88,3 +88,7 @@ Run all tests:
 ```bash
 bundle exec rspec
 ```
+
+## License
+
+[MIT](LICENSE.txt)
