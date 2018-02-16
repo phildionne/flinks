@@ -38,8 +38,9 @@ module Flinks
     # @raise [Flinks::Error]
     def request(method, path, params: {}, body: {})
       headers = {
-        'Accept'     => "application/json",
-        'User-Agent' => user_agent
+        'Content-Type' => "application/json",
+        'Accept'       => "application/json",
+        'User-Agent'   => user_agent
       }
 
       # Build URL
