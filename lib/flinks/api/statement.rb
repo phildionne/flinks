@@ -15,10 +15,8 @@ module Flinks
       # @param options [Hash]
       # @return [Hash]
       def statements(options: {})
-        payload = StatementRequestSchema.call(options)
-        raise ArgumentError, error_message(payload) unless payload.success?
-
-        post("#{customer_id}/BankingServices/GetStatements", body: payload.to_h)
+        validate_request!(StatementRequestSchema, options)
+        post("#{customer_id}/BankingServices/GetStatements", body: options)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-pdf-statements

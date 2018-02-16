@@ -26,11 +26,25 @@ module Flinks
     option :on_error,     default: proc { proc {} }
     option :debug,        default: proc { false }
 
+
+    private
+
+    # Builds an error message from a validation object
     #
     # @param validation [Dry::Validation::Result]
     # @return [String]
     def error_message(validation)
       validation.messages(full: true).values.flatten.to_sentence
+    end
+
+    # Validates a request payload against a schema object
+    #
+    # @param schema [Class]
+    # @param options [Hash]
+    # @raise [ArgumentError]
+    def validate_request!(schema, options)
+      payload = schema.call(options)
+      raise ArgumentError, error_message(payload) unless payload.success?
     end
   end
 end

@@ -42,10 +42,10 @@ module Flinks
       # @param options [Hash]
       # @return [Hash]
       def authorize(login_id:, options: {})
-        payload = AuthorizeRequestSchema.call(options.merge(login_id: login_id))
-        raise ArgumentError, error_message(payload) unless payload.success?
+        payload = options.merge(login_id: login_id)
+        validate_request!(AuthorizeRequestSchema, payload)
 
-        post("#{customer_id}/BankingServices/Authorize", body: payload.to_hash)
+        post("#{customer_id}/BankingServices/Authorize", body: payload)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#authorize
@@ -54,20 +54,20 @@ module Flinks
       # @param institution [String]
       # @param options [Hash]
       def authorize_with_credentials(username:, password:, institution:, options: {})
-        payload = AuthorizeWithCredentialsRequestSchema.call(options.merge(username: username, password: password, institution: institution))
-        raise ArgumentError, error_message(payload) unless payload.success?
+        payload = options.merge(username: username, password: password, institution: institution)
+        validate_request!(AuthorizeWithCredentialsRequestSchema, payload)
 
-        post("#{customer_id}/BankingServices/Authorize", body: payload.to_hash)
+        post("#{customer_id}/BankingServices/Authorize", body: payload)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#authorize-multiple
       # @param login_ids [Array]
       # @return [Hash]
       def authorize_multiple(login_ids:)
-        payload = AuthorizeMultipleRequestSchema.call(options.merge(login_ids: login_ids))
-        raise ArgumentError, error_message(payload) unless payload.success?
+        payload = options.merge(login_ids: login_ids)
+        validate_request!(AuthorizeMultipleRequestSchema, payload)
 
-        post("#{customer_id}/BankingServices/AuthorizeMultiple", body: payload.to_hash)
+        post("#{customer_id}/BankingServices/AuthorizeMultiple", body: payload)
       end
     end
   end

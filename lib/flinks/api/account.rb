@@ -41,10 +41,10 @@ module Flinks
       # @param options [Hash]
       # @return [Hash]
       def accounts_summary(request_id:, options: {})
-        payload = AccountSummaryRequestSchema.call(options.merge(request_id: request_id))
-        raise ArgumentError, error_message(payload) unless payload.success?
+        payload = options.merge(request_id: request_id)
+        validate_request!(AccountSummaryRequestSchema, payload)
 
-        post("#{customer_id}/BankingServices/GetAccountsSummary", body: payload.to_h)
+        post("#{customer_id}/BankingServices/GetAccountsSummary", body: payload)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-detail
@@ -52,10 +52,10 @@ module Flinks
       # @param options [Hash]
       # @return [Hash]
       def accounts_detail(request_id:, options: {})
-        payload = AccountDetailRequestSchema.call(options.merge(request_id: request_id))
-        raise ArgumentError, error_message(payload) unless payload.success?
+        payload = options.merge(request_id: request_id)
+        validate_request!(AccountDetailRequestSchema, payload)
 
-        post("#{customer_id}/BankingServices/GetAccountsDetail", body: payload.to_h)
+        post("#{customer_id}/BankingServices/GetAccountsDetail", body: payload)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-summary
