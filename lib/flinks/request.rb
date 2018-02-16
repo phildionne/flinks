@@ -53,7 +53,11 @@ module Flinks
       response = Http.headers(headers).send(method, url, params: params, json: payload)
 
       if debug
-        p response
+        p "Method: #{method}"
+        p "Url: #{url}"
+        p "Headers: #{headers}"
+        p "Payload: #{payload}"
+        p "Response: #{response}"
       end
 
       # Pass on errors when HTTP status included in 400 to 599
