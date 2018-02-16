@@ -49,6 +49,12 @@ flinks = Flinks.new({
 
 ### Endpoints
 
+#### Authorize
+
+- `authorize(login_id:, options:)`
+- `authorize_with_credentials(username:, password:, institution:, options:)`
+- `authorize_multiple(login_ids:)`
+
 #### Account
 
 - `accounts_summary(request_id:, options:)`
