@@ -1,3 +1,4 @@
+require 'active_support/core_ext/hash/indifferent_access'
 require 'http'
 
 require 'flinks/error'
@@ -67,8 +68,11 @@ module Flinks
         on_error.call(response.code, response.reason, body)
       end
 
-      # Return parsed json body
-      response.parse
+      # Parse body
+      data = response.parse
+
+      # Transform data
+      data.deep_transform_keys { |k| k.underscore }.with_indifferent_access
     end
   end
 end
