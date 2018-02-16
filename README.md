@@ -79,6 +79,34 @@ flinks = Flinks.new({
 - `statements(options:)`
 - `statements_async(request_id:)`
 
+## Errors
+
+### Client Errors
+
+| Error | Description |
+|-------|-------------|
+| `Flinks::ClientError` | Raised when API returns a 400..499 HTTP status code |
+| `Flinks::BadRequest` | Raised when API returns a 400 HTTP status code |
+| `Flinks::Unauthorized` | Raised when API returns a 401 HTTP status code |
+| `Flinks::Forbidden` | Raised when API returns a 403 HTTP status code |
+| `Flinks::TooManyRequests` | Raised when API returns a 403 HTTP status code for rate limit exceeded |
+| `Flinks::NotFound` | Raised when API returns a 404 HTTP status code |
+| `Flinks::MethodNotAllowed` | Raised when API returns a 405 HTTP status code |
+| `Flinks::NotAcceptable` | Raised when API returns a 406 HTTP status code |
+| `Flinks::Conflict` | Raised when API returns a 409 HTTP status code |
+| `Flinks::UnsupportedMediaType` | Raised when API returns a 415 HTTP status code |
+| `Flinks::UnprocessableEntity` | Raised when API returns a 422 HTTP status code |
+
+### Server Errors
+
+| Error | Description |
+|-------|-------------|
+| `Flinks::ServerError` | Raised when API returns a 500..599 HTTP status code |
+| `Flinks::InternalServerError` | Raised when API returns a 500 HTTP status code |
+| `Flinks::NotImplemented` | Raised when API returns a 501 HTTP status code |
+| `Flinks::BadGateway` | Raised when API returns a 502 HTTP status code |
+| `Flinks::ServiceUnavailable` | Raised when API returns a 503 HTTP status code |
+
 ## Documentation
 
 See the [API docs](https://sandbox-api.flinks.io).
