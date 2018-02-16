@@ -21,28 +21,30 @@ gem 'flinks', require: 'flinks'
 
 ## Usage
 
-This library needs to be configured with your API customer ID.
+This library needs to be configured with your API customer ID and API endpoint.
 
 ```ruby
-flinks = Flinks.new(customer_id: ENV['FLINKS_CUSTOMER_ID'])
+flinks = Flinks.new(customer_id: ENV['FLINKS_CUSTOMER_ID'], api_endpoint: "https://YOURNAME-api.private.fin.ag/v3/")
 ```
 
-Configure `on_error` to catch API requests returning a 400..599 HTTP status.
+Configure `on_error` to catch API requests returning a `400..599` HTTP status.
 
 ```ruby
 flinks = Flinks.new({
   customer_id: ENV['FLINKS_CUSTOMER_ID'],
+  api_endpoint: "https://YOURNAME-api.private.fin.ag/v3/",
   on_error: Proc.new do |status, message, body|
     p [status, message, body]
   end
 })
 ```
 
-Configure `debug` to print every API responses.
+Configure `debug` to print every API requests and responses.
 
 ```ruby
 flinks = Flinks.new({
   customer_id: ENV['FLINKS_CUSTOMER_ID'],
+  api_endpoint: "https://YOURNAME-api.private.fin.ag/v3/",
   debug: true
 })
 ```
