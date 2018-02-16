@@ -10,7 +10,7 @@ module Flinks
     # @param path [String]
     # @param params [Hash]
     def get(path, params: {})
-      request(:get, URI.parse(api_endpoint).merge(path), params: params)
+      request(:get, path, params: params)
     end
 
     # Performs a HTTP Post request
@@ -19,7 +19,7 @@ module Flinks
     # @param params [Hash]
     # @param body [Hash]
     def post(path, params: {}, body: {})
-      request(:post, URI.parse(api_endpoint).merge(path), params: params, body: body)
+      request(:post, path, params: params, body: body)
     end
 
     # Performs a HTTP Patch request
@@ -28,7 +28,7 @@ module Flinks
     # @param params [Hash]
     # @param body [Hash]
     def patch(path, params: {}, body: {})
-      request(:patch, URI.parse(api_endpoint).merge(path), params: params, body: body)
+      request(:patch, path, params: params, body: body)
     end
 
 
@@ -42,11 +42,14 @@ module Flinks
         'User-Agent' => user_agent
       }
 
+      # Build URL
+      url = URI.parse(api_endpoint).merge(path)
+
       # Build payload
       payload = body.transform_keys { |k| k.to_s.camelize }
 
       # Perform request
-      response = Http.headers(headers).send(method, path, params: params, json: payload)
+      response = Http.headers(headers).send(method, url, params: params, json: payload)
 
       if debug
         p response
