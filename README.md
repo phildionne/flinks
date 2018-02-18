@@ -21,10 +21,10 @@ gem 'flinks', require: 'flinks'
 
 ## Usage
 
-This library needs to be configured with your API customer ID and API endpoint.
+This library needs to be configured with your API customer ID.
 
 ```ruby
-flinks = Flinks.new(customer_id: ENV['FLINKS_CUSTOMER_ID'], api_endpoint: "https://YOURNAME-api.private.fin.ag/v3/")
+flinks = Flinks.new(customer_id: ENV['FLINKS_CUSTOMER_ID'])
 ```
 
 Configure `on_error` to catch API requests returning a `400..599` HTTP status.
@@ -32,7 +32,6 @@ Configure `on_error` to catch API requests returning a `400..599` HTTP status.
 ```ruby
 flinks = Flinks.new({
   customer_id: ENV['FLINKS_CUSTOMER_ID'],
-  api_endpoint: "https://YOURNAME-api.private.fin.ag/v3/",
   on_error: Proc.new do |status, message, body|
     p [status, message, body]
   end
@@ -44,9 +43,16 @@ Configure `debug` to print every API requests and responses.
 ```ruby
 flinks = Flinks.new({
   customer_id: ENV['FLINKS_CUSTOMER_ID'],
-  api_endpoint: "https://YOURNAME-api.private.fin.ag/v3/",
   debug: true
 })
+```
+
+### Sandbox and Production
+
+By default, the client uses the sandbox API endpoint: `https://sandbox.flinks.io/v3/`. In production, the API endpoint must be configured with your own:
+
+```ruby
+flinks = Flinks.new(customer_id: ENV['FLINKS_CUSTOMER_ID'], api_endpoint: "https://YOURNAME-api.private.fin.ag/v3/")
 ```
 
 ### Endpoints
