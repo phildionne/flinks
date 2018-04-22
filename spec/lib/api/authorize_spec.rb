@@ -115,4 +115,43 @@ describe Flinks::API::Authorize do
       end
     end
   end
+
+  describe '#authorize_multiple' do
+    let(:login_ids) { ['login_id_1', 'login_id_2'] }
+
+    before do
+      stub_request(:post, /#{api_endpoint}/)
+        .to_return(status: 200, body: "{}", headers: { 'Content-Type'=>'application/json' })
+    end
+
+    it "returns an object" do
+      expect(client.authorize_multiple(login_ids: login_ids)).to be_a(Hash)
+    end
+
+    context "with valid options" do
+      let(:options) do
+        {
+          most_recent_cached: true,
+        }
+      end
+
+      it "returns an object" do
+        expect(client.authorize_multiple(login_ids: login_ids, options: options)).to be_a(Hash)
+      end
+    end
+
+    context "with invalid options" do
+      let(:options) do
+        {
+          most_recent_cached: 'invalid'
+        }
+      end
+
+      it "raises an error" do
+        expect {
+          client.authorize_multiple(login_ids: login_ids, options: options)
+        }.to raise_error(ArgumentError)
+      end
+    end
+  end
 end
