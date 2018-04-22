@@ -35,6 +35,8 @@ module Flinks
 
       AuthorizeMultipleRequestSchema = Dry::Validation.Schema do
         required(:login_ids).each(:str?)
+
+        optional(:most_recent_cached).filled(:bool?)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#authorize
@@ -62,8 +64,9 @@ module Flinks
 
       # @see https://sandbox-api.flinks.io/Readme/#authorize-multiple
       # @param login_ids [Array]
+      # @param options [Hash]
       # @return [Hash]
-      def authorize_multiple(login_ids:)
+      def authorize_multiple(login_ids:, options: {})
         payload = options.merge(login_ids: login_ids)
         validate_request!(AuthorizeMultipleRequestSchema, payload)
 
