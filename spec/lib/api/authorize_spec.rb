@@ -55,7 +55,7 @@ describe Flinks::API::Authorize do
 
       it "raises an error" do
         expect {
-          client.accounts_summary(login_id: login_id, options: options)
+          client.authorize(login_id: login_id, options: options)
         }.to raise_error(ArgumentError)
       end
     end
