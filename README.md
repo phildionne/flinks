@@ -76,8 +76,6 @@ flinks = Flinks.new(customer_id: ENV['FLINKS_CUSTOMER_ID'], api_endpoint: "https
 
 #### Refresh
 
-- `activate_scheduled_refresh(login_id:)`
-- `deactivate_scheduled_refresh(login_id:)`
 - `set_scheduled_refresh(activated, login_id:)`
 
 #### Statement

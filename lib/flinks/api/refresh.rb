@@ -1,20 +1,6 @@
 module Flinks
   module API
     module Refresh
-      
-      # @see https://sandbox-api.flinks.io/Readme/#scheduling-background-refresh
-      # @param login_id [String]
-      # @return [Hash]
-      def activate_scheduled_refresh(login_id:)
-        patch("#{customer_id}/BankingServices/ActivateScheduledRefresh/#{login_id}")
-      end
-
-      # @see https://sandbox-api.flinks.io/Readme/#scheduling-background-refresh
-      # @param login_id [String]
-      # @return [Hash]
-      def deactivate_scheduled_refresh(login_id:)
-        patch("#{customer_id}/BankingServices/DeactivateScheduledRefresh/#{login_id}")
-      end
 
       # @see https://sandbox-api.flinks.io/Readme/#scheduling-background-refresh
       # @param activated [Boolean]
