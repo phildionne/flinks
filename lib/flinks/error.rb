@@ -9,6 +9,7 @@ module Flinks
     def self.from_response(response)
       klass = case response.code
               when 400      then Flinks::BadRequest
+              when 202      then error_for_202(response)
               when 401      then Flinks::Unauthorized
               when 403      then error_for_403(response)
               when 404      then Flinks::NotFound
@@ -28,6 +29,16 @@ module Flinks
               end
 
       klass.new(response)
+    end
+
+    # @param response [HTTP::Response]
+    # @return [Flinks::Error]
+    def self.error_for_202(response)
+      if response.parse['FlinksCode'] == 'OPERATION_PENDING'
+        Flinks::OperationPending
+      else
+        Flinks::OperationDispatched
+      end
     end
 
     # @param response [HTTP::Response]
@@ -57,6 +68,12 @@ module Flinks
       response.reason
     end
   end
+
+  # Raised when API returns a 202 HTTP status code
+  class OperationPending < Error; end
+
+  # Raised when API returns a 202 HTTP status code
+  class OperationDispatched < Error; end
 
   # Raised when API returns a 400..499 HTTP status code
   class ClientError < Error; end
