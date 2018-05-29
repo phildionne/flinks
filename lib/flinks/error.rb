@@ -8,8 +8,8 @@ module Flinks
     # @return [Flinks::Error]
     def self.from_response(response)
       klass = case response.code
-              when 400      then Flinks::BadRequest
               when 202      then error_for_202(response)
+              when 400      then error_for_400(response)
               when 401      then Flinks::Unauthorized
               when 403      then error_for_403(response)
               when 404      then Flinks::NotFound
@@ -38,6 +38,16 @@ module Flinks
         Flinks::OperationPending
       else
         Flinks::OperationDispatched
+      end
+    end
+
+    # @param response [HTTP::Response]
+    # @return [Flinks::Error]
+    def self.error_for_400(response)
+      if response.parse['FlinksCode'] == 'SESSION_NONEXISTENT'
+        Flinks::SessionNonexistent
+      else
+        Flinks::BadRequest
       end
     end
 
@@ -80,6 +90,9 @@ module Flinks
 
   # Raised when API returns a 400 HTTP status code
   class BadRequest < ClientError; end
+
+  # Raised when API returns a 400 HTTP status code
+  class SessionNonexistent < ClientError; end
 
   # Raised when API returns a 401 HTTP status code
   class Unauthorized < ClientError; end
