@@ -72,8 +72,8 @@ module Flinks
 
     # @return [String]
     def build_message
-      message = response.parse['Message']
-      message << " - FlinksCode: #{response.parse['FlinksCode']}"
+      message = response.parse['Message'] || "Error"
+      message + " - FlinksCode: #{response.parse['FlinksCode']}"
     rescue HTTP::Error
       response.reason
     end
