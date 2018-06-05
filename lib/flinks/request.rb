@@ -12,8 +12,16 @@ module Flinks
     #
     # @param path [String]
     # @param params [Hash]
-    def get(path, params: {})
-      request(:get, path, params: params)
+    def get(path, params: {}, async: false)
+      request(:get, path, params: params, async: async)
+    end
+
+    # Performs a HTTP Delete request
+    #
+    # @param path [String]
+    # @param params [Hash]
+    def delete(path, params: {}, async: false)
+      request(:delete, path, params: params, async: async)
     end
 
     # Performs a HTTP Post request
@@ -21,8 +29,8 @@ module Flinks
     # @param path [String]
     # @param params [Hash]
     # @param body [Hash]
-    def post(path, params: {}, body: {})
-      request(:post, path, params: params, body: body)
+    def post(path, params: {}, body: {}, async: false)
+      request(:post, path, params: params, body: body, async: async)
     end
 
     # Performs a HTTP Patch request
@@ -30,16 +38,15 @@ module Flinks
     # @param path [String]
     # @param params [Hash]
     # @param body [Hash]
-    def patch(path, params: {}, body: {})
-      request(:patch, path, params: params, body: body)
+    def patch(path, params: {}, body: {}, async: false)
+      request(:patch, path, params: params, body: body, async: async)
     end
-
 
     private
 
     # @return [HTTP::Client]
     # @raise [Flinks::Error]
-    def request(method, path, params: {}, body: {})
+    def request(method, path, params: {}, body: {}, async: false)
       headers = {
         'Content-Type' => "application/json",
         'Accept'       => "application/json",
@@ -52,14 +59,22 @@ module Flinks
       # Build payload
       payload = body.transform_keys { |k| k.to_s.camelize }
 
-      # Perform request
-      response = Http.headers(headers).send(method, url, params: params, json: payload)
-
       if debug
         p "Method: #{method}"
         p "Url: #{url}"
         p "Headers: #{headers}"
         p "Payload: #{payload}"
+        p "Response: loading..."
+      end
+
+      # Perform request
+      if async
+        response = Http.headers(headers).send(method, url)
+      else
+        response = Http.headers(headers).send(method, url, params: params, json: payload)
+      end
+
+      if debug
         p "Response: #{response}"
       end
 
@@ -75,6 +90,9 @@ module Flinks
 
       # Transform data
       data.deep_transform_keys { |k| k.underscore }.with_indifferent_access
+
+    rescue JSON::ParserError
+      response
     end
   end
 end

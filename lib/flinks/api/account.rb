@@ -64,14 +64,14 @@ module Flinks
       # @param request_id [String]
       # @return [Hash]
       def accounts_summary_async(request_id:)
-        get("#{customer_id}/BankingServices/GetAccountsSummaryAsync/#{request_id}")
+        get("#{customer_id}/BankingServices/GetAccountsSummaryAsync/#{request_id}", params: {}, async: true)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-detail
       # @param request_id [String]
       # @return [Hash]
       def accounts_detail_async(request_id:)
-        get("#{customer_id}/BankingServices/GetAccountsDetailAsync/#{request_id}")
+        get("#{customer_id}/BankingServices/GetAccountsDetailAsync/#{request_id}", params: {}, async: true)
       end
     end
   end
