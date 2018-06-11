@@ -65,7 +65,7 @@ module Flinks
     # @return [Flinks::Error]
     def initialize(response)
       @response = response
-      @code = response.code
+      @code = response.code if response.try(:code).present?
 
       super(build_message)
     end
@@ -75,7 +75,7 @@ module Flinks
       message = response.parse['Message'] || "Error"
       message + " - FlinksCode: #{response.parse['FlinksCode']}"
     rescue StandardError
-      response.reason
+      response.try(:reason)
     end
   end
 
