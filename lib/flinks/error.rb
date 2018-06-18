@@ -2,7 +2,7 @@
 
 module Flinks
   class Error < StandardError
-    attr_reader :response, :code
+    attr_reader :response, :code, :flinks_code
 
     # @param response [HTTP::Response]
     # @return [Flinks::Error]
@@ -66,6 +66,7 @@ module Flinks
     def initialize(response)
       @response = response
       @code = response.code if response.try(:code).present?
+      @flinks_code = response&.try(:parse)&.dig('FlinksCode')
 
       super(build_message)
     end
