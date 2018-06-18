@@ -47,6 +47,15 @@ flinks = Flinks.new({
 })
 ```
 
+Configure `raw` to get the raw, non-transformed API response.
+
+```ruby
+flinks = Flinks.new({
+  customer_id: ENV['FLINKS_CUSTOMER_ID'],
+  raw: true
+})
+```
+
 ### Sandbox and Production
 
 By default, the client uses the sandbox API endpoint: `https://sandbox.flinks.io/v3/`. In production, the API endpoint must be configured with your own:

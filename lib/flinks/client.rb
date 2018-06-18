@@ -27,6 +27,7 @@ module Flinks
     option :user_agent,   default: proc { "Flinks Ruby Gem" }
     option :on_error,     default: proc { proc {} }
     option :debug,        default: proc { false }
+    option :raw,          default: proc { false }
 
 
     private

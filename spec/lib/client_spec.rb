@@ -18,6 +18,7 @@ describe Flinks::Client do
       expect(client.user_agent).not_to be_nil
       expect(client.on_error).not_to be_nil
       expect(client.debug).not_to be_nil
+      expect(client.raw).not_to be_nil
     end
   end
 end
