@@ -38,7 +38,7 @@ flinks = Flinks.new({
 })
 ```
 
-Configure `debug` to print every API requests and responses.
+Configure `debug` to print every API requests and responses. Default to `false`.
 
 ```ruby
 flinks = Flinks.new({
@@ -47,7 +47,7 @@ flinks = Flinks.new({
 })
 ```
 
-Configure `raw` to get the raw, non-transformed API response.
+Configure `raw` to get the raw, non-transformed API response. Default to `false`.
 
 ```ruby
 flinks = Flinks.new({
