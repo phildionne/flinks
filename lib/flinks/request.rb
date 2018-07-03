@@ -83,10 +83,10 @@ module Flinks
       data = response.parse
 
       # Transform data
-      if raw
-        data
-      else
+      if !raw && raw.is_a?(Hash)
         data.deep_transform_keys { |k| k.underscore }.with_indifferent_access
+      else
+        data
       end
     end
   end
