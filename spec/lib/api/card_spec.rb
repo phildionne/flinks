@@ -7,7 +7,7 @@ describe Flinks::API::Card do
 
   describe '#delete_card' do
     before do
-      stub_request(:get, /#{api_endpoint}/)
+      stub_request(:delete, /#{api_endpoint}/)
         .to_return(status: 200, body: "{}", headers: { 'Content-Type'=>'application/json' })
     end
 

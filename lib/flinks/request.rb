@@ -34,6 +34,15 @@ module Flinks
       request(:patch, path, params: params, body: body)
     end
 
+    # Performs a HTTP Delete request
+    #
+    # @param [String] path
+    # @param [Hash] params
+    # @param [Hash] body
+    def delete(path, params: {}, body: {})
+      request(:delete, path, params: params, body: body)
+    end
+
 
     private
 

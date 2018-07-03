@@ -8,7 +8,7 @@ module Flinks
       # @param [String] login_id
       # @return [Hash]
       def delete_card(login_id:)
-        get("#{customer_id}/BankingServices/DeleteCard/#{login_id}")
+        delete("#{customer_id}/BankingServices/DeleteCard/#{login_id}")
       end
     end
   end
