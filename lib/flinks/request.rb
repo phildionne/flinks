@@ -74,7 +74,9 @@ module Flinks
       data = response.parse
 
       # Transform data
-      unless raw
+      if raw
+        data
+      else
         data.deep_transform_keys { |k| k.underscore }.with_indifferent_access
       end
     end
