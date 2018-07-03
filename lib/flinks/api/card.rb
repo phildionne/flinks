@@ -7,8 +7,8 @@ module Flinks
       # https://sandbox-api.flinks.io/Readme/#delete-card-information
       # @param [String] login_id
       # @return [Hash]
-      def delete_card(card_id:)
-        get("#{customer_id}/BankingServices/DeleteCard/#{card_id}")
+      def delete_card(login_id:)
+        get("#{customer_id}/BankingServices/DeleteCard/#{login_id}")
       end
     end
   end
