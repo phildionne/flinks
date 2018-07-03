@@ -39,8 +39,8 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-summary
-      # @param request_id [String]
-      # @param options [Hash]
+      # @param [String] request_id
+      # @param [Hash] options
       # @return [Hash]
       def accounts_summary(request_id:, options: {})
         payload = options.merge(request_id: request_id)
@@ -50,8 +50,8 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-detail
-      # @param request_id [String]
-      # @param options [Hash]
+      # @param [String] request_id
+      # @param [Hash] options
       # @return [Hash]
       def accounts_detail(request_id:, options: {})
         payload = options.merge(request_id: request_id)
@@ -61,14 +61,14 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-summary
-      # @param request_id [String]
+      # @param [String] request_id
       # @return [Hash]
       def accounts_summary_async(request_id:)
         get("#{customer_id}/BankingServices/GetAccountsSummaryAsync/#{request_id}")
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-detail
-      # @param request_id [String]
+      # @param [String] request_id
       # @return [Hash]
       def accounts_detail_async(request_id:)
         get("#{customer_id}/BankingServices/GetAccountsDetailAsync/#{request_id}")

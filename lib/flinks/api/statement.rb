@@ -14,7 +14,7 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-pdf-statements
-      # @param options [Hash]
+      # @param [Hash] options
       # @return [Hash]
       def statements(options: {})
         validate_request!(StatementRequestSchema, options)
@@ -22,7 +22,7 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-pdf-statements
-      # @param request_id [String]
+      # @param [String] request_id
       # @return [Hash]
       def statements_async(request_id:)
         get("#{customer_id}/BankingServices/GetStatementsAsync/#{request_id}")

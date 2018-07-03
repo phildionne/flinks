@@ -4,7 +4,7 @@ module Flinks
   class Error < StandardError
     attr_reader :response, :code
 
-    # @param response [HTTP::Response]
+    # @param [HTTP::Response] response
     # @return [Flinks::Error]
     def self.from_response(response)
       klass = case response.code
@@ -31,7 +31,7 @@ module Flinks
       klass.new(response)
     end
 
-    # @param response [HTTP::Response]
+    # @param [HTTP::Response] response
     # @return [Flinks::Error]
     def self.error_for_202(response)
       if response.parse['FlinksCode'] == 'OPERATION_PENDING'
@@ -41,7 +41,7 @@ module Flinks
       end
     end
 
-    # @param response [HTTP::Response]
+    # @param [HTTP::Response] response
     # @return [Flinks::Error]
     def self.error_for_400(response)
       if response.parse['FlinksCode'] == 'SESSION_NONEXISTENT'
@@ -51,7 +51,7 @@ module Flinks
       end
     end
 
-    # @param response [HTTP::Response]
+    # @param [HTTP::Response] response
     # @return [Flinks::Error]
     def self.error_for_403(response)
       if response.parse['FlinksCode'] == 'TOO_MANY_REQUESTS'
@@ -61,7 +61,7 @@ module Flinks
       end
     end
 
-    # @param response [HTTP::Response]
+    # @param [HTTP::Response] response
     # @return [Flinks::Error]
     def initialize(response)
       @response = response

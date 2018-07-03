@@ -10,26 +10,26 @@ module Flinks
 
     # Performs a HTTP Get request
     #
-    # @param path [String]
-    # @param params [Hash]
+    # @param [String] path
+    # @param [Hash] params
     def get(path, params: {})
       request(:get, path, params: params)
     end
 
     # Performs a HTTP Post request
     #
-    # @param path [String]
-    # @param params [Hash]
-    # @param body [Hash]
+    # @param [String] path
+    # @param [Hash] params
+    # @param [Hash] body
     def post(path, params: {}, body: {})
       request(:post, path, params: params, body: body)
     end
 
     # Performs a HTTP Patch request
     #
-    # @param path [String]
-    # @param params [Hash]
-    # @param body [Hash]
+    # @param [String] path
+    # @param [Hash] params
+    # @param [Hash] body
     def patch(path, params: {}, body: {})
       request(:patch, path, params: params, body: body)
     end

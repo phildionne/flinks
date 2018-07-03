@@ -42,8 +42,8 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#authorize
-      # @param login_id [String]
-      # @param options [Hash]
+      # @param [String] login_id
+      # @param [Hash] options
       # @return [Hash]
       def authorize(login_id:, options: {})
         payload = options.merge(login_id: login_id)
@@ -53,10 +53,10 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#authorize
-      # @param username [String]
-      # @param password [String]
-      # @param institution [String]
-      # @param options [Hash]
+      # @param [String] username
+      # @param [String] password
+      # @param [String] institution
+      # @param [Hash] options
       def authorize_with_credentials(username:, password:, institution:, options: {})
         payload = options.merge(username: username, password: password, institution: institution)
         validate_request!(AuthorizeWithCredentialsRequestSchema, payload)
@@ -65,8 +65,8 @@ module Flinks
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#authorize-multiple
-      # @param login_ids [Array]
-      # @param options [Hash]
+      # @param [Array] login_ids
+      # @param [Hash] options
       # @return [Hash]
       def authorize_multiple(login_ids:, options: {})
         payload = options.merge(login_ids: login_ids)

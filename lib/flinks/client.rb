@@ -34,7 +34,7 @@ module Flinks
 
     # Builds an error message from a validation object
     #
-    # @param validation [Dry::Validation::Result]
+    # @param [Dry::Validation::Result] validation
     # @return [String]
     def error_message(validation)
       validation.messages(full: true).values.flatten.to_sentence
@@ -42,8 +42,8 @@ module Flinks
 
     # Validates a request payload against a schema object
     #
-    # @param schema [Class]
-    # @param options [Hash]
+    # @param [Class] schema
+    # @param [Hash] options
     # @raise [ArgumentError]
     def validate_request!(schema, options)
       payload = schema.call(options)
