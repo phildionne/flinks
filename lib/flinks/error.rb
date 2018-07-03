@@ -2,7 +2,7 @@
 
 module Flinks
   class Error < StandardError
-    attr_reader :response, :code
+    attr_accessor :response, :code
 
     # @param [HTTP::Response] response
     # @return [Flinks::Error]
@@ -28,7 +28,11 @@ module Flinks
                 self
               end
 
-      klass.new(response)
+      error          = klass.new(build_message(response))
+      error.response = response
+      error.code     = response.code
+
+      error
     end
 
     # @param [HTTP::Response] response
@@ -62,16 +66,8 @@ module Flinks
     end
 
     # @param [HTTP::Response] response
-    # @return [Flinks::Error]
-    def initialize(response)
-      @response = response
-      @code = response.code
-
-      super(build_message)
-    end
-
     # @return [String]
-    def build_message
+    def self.build_message(response)
       message = response.parse['Message']
       message << " - FlinksCode: #{response.parse['FlinksCode']}"
     rescue HTTP::Error
