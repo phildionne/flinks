@@ -62,7 +62,7 @@ module Flinks
       payload = body.transform_keys { |k| k.to_s.camelize }
 
       # Perform request
-      response = Http.headers(headers).send(method, url, params: params, json: payload)
+      response = HTTP.headers(headers).send(method, url, params: params, json: payload)
 
       if debug
         p "Method: #{method}"
