@@ -3,19 +3,21 @@ source "https://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem 'http', '~> 3.0'
-gem 'dry-validation', '~> 0.11'
-gem 'dry-initializer', '~> 2.4'
-gem 'activesupport', '>= 3.0'
+gem 'http', '~> 4.2'
+# gem 'dry-validation',  '~> 1.3'
+gem 'dry-schema', '~> 1.4'
+gem 'dry-initializer', '~> 3'
+gem 'activesupport', '>= 3'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem 'rspec'
-  gem "shoulda", ">= 0"
-  gem "rdoc", "~> 3.12"
-  gem "bundler", "~> 1.0"
-  gem "juwelier", "~> 2.1.0"
+  gem "shoulda", "~> 3"
+  gem "rdoc", "~> 6"
+  gem "bundler", "~> 1"
+  gem "juwelier", "~> 2"
   gem "simplecov", ">= 0"
   gem 'webmock'
+  gem 'pry'
 end
