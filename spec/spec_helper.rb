@@ -3,6 +3,7 @@ SimpleCov.start
 
 require 'rspec'
 require 'webmock/rspec'
+require 'pry'
 
 require 'flinks'
 
