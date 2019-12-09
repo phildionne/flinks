@@ -1,44 +1,44 @@
 # frozen_string_literal: true
 
-require 'dry-validation'
+require 'dry-schema'
 
 module Flinks
   module API
     module Authorize
-      AuthorizeRequestSchema = Dry::Validation.Schema do
-        required(:login_id).filled(:str?)
+      AuthorizeRequestSchema = Dry::Schema.Params do
+        required(:login_id).filled(:string)
 
-        optional(:language).filled(:str?)
-        optional(:save).filled(:bool?)
-        optional(:security_responses).filled(:hash?)
-        optional(:schedule_refresh).filled(:bool?)
-        optional(:direct_refresh).filled(:bool?)
-        optional(:days_of_transactions).included_in?(['Days90', 'Days360'])
-        optional(:most_recent_cached).filled(:bool?)
-        optional(:with_transactions).filled(:bool?)
-        optional(:with_balance).filled(:bool?)
+        optional(:language).filled(:string)
+        optional(:save).filled(:bool)
+        optional(:security_responses).filled(:hash)
+        optional(:schedule_refresh).filled(:bool)
+        optional(:direct_refresh).filled(:bool)
+        optional(:days_of_transactions).value(included_in?: ['Days90', 'Days360'])
+        optional(:most_recent_cached).filled(:bool)
+        optional(:with_transactions).filled(:bool)
+        optional(:with_balance).filled(:bool)
       end
 
-      AuthorizeWithCredentialsRequestSchema = Dry::Validation.Schema do
-        required(:username).filled?(:str?)
-        required(:password).filled?(:str?)
-        required(:institution).filled?(:str?)
+      AuthorizeWithCredentialsRequestSchema = Dry::Schema.Params do
+        required(:username).filled(:string)
+        required(:password).filled(:string)
+        required(:institution).filled(:string)
 
-        optional(:language).filled(:str?)
-        optional(:save).filled(:bool?)
-        optional(:security_responses).filled(:hash?)
-        optional(:schedule_refresh).filled(:bool?)
-        optional(:direct_refresh).filled(:bool?)
-        optional(:days_of_transactions).included_in?(['Days90', 'Days360'])
-        optional(:most_recent_cached).filled(:bool?)
-        optional(:with_transactions).filled(:bool?)
-        optional(:with_balance).filled(:bool?)
+        optional(:language).filled(:string)
+        optional(:save).filled(:bool)
+        optional(:security_responses).filled(:hash)
+        optional(:schedule_refresh).filled(:bool)
+        optional(:direct_refresh).filled(:bool)
+        optional(:days_of_transactions).value(included_in?: ['Days90', 'Days360'])
+        optional(:most_recent_cached).filled(:bool)
+        optional(:with_transactions).filled(:bool)
+        optional(:with_balance).filled(:bool)
       end
 
-      AuthorizeMultipleRequestSchema = Dry::Validation.Schema do
-        required(:login_ids).each(:str?)
+      AuthorizeMultipleRequestSchema = Dry::Schema.Params do
+        required(:login_ids).array(:string)
 
-        optional(:most_recent_cached).filled(:bool?)
+        optional(:most_recent_cached).filled(:bool)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#authorize

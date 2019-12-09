@@ -1,41 +1,39 @@
 # frozen_string_literal: true
 
-require 'dry-validation'
+require 'dry-schema'
 
 module Flinks
   module API
     module Account
-      AccountSummaryRequestSchema = Dry::Validation.Schema do
-        required(:request_id).filled(:str?)
-        optional(:direct_refresh).filled(:bool?)
-        optional(:with_balance).filled(:bool?)
-        optional(:with_transactions).filled(:bool?)
-        optional(:with_account_identity).filled(:bool?)
-        optional(:most_recent).filled(:bool?)
-        optional(:most_recent_cached).filled(:bool?)
+      AccountSummaryRequestSchema = Dry::Schema.Params do
+        required(:request_id).filled(:string)
+        optional(:direct_refresh).filled(:bool)
+        optional(:with_balance).filled(:bool)
+        optional(:with_transactions).filled(:bool)
+        optional(:with_account_identity).filled(:bool)
+        optional(:most_recent).filled(:bool)
+        optional(:most_recent_cached).filled(:bool)
       end
 
-      AccountDetailRequestSchema = Dry::Validation.Schema do
-        required(:request_id).filled(:str?)
-        optional(:with_account_identity).filled(:bool?)
-        optional(:with_kyc).filled(:bool?)
-        optional(:with_transactions).filled(:bool?)
-        optional(:with_balance).filled(:bool?)
-        optional(:get_mfa_questions_answers).filled(:bool?)
+      AccountDetailRequestSchema = Dry::Schema.Params do
+        required(:request_id).filled(:string)
+        optional(:with_account_identity).filled(:bool)
+        optional(:with_kyc).filled(:bool)
+        optional(:with_transactions).filled(:bool)
+        optional(:with_balance).filled(:bool)
+        optional(:get_mfa_questions_answers).filled(:bool)
         optional(:date_from).filled(:date?)
         optional(:date_to) { date? | date_time? }
-        optional(:accounts_filter).each(:str?)
+        optional(:accounts_filter).array(:string)
 
-        optional(:refresh_delta).each do
-          schema do
-            required(:account_id).filled(:str?)
-            required(:transaction_id).filled(:str?)
-          end
+        optional(:refresh_delta).array(:hash) do
+          required(:account_id).filled(:string)
+          required(:transaction_id).filled(:string)
         end
 
-        optional(:days_of_transactions).included_in?(['Days90', 'Days360'])
-        optional(:most_recent).filled(:bool?)
-        optional(:most_recent_cached).filled(:bool?)
+        optional(:days_of_transactions).value(included_in?: ['Days90', 'Days360'])
+        optional(:most_recent).filled(:bool)
+        optional(:most_recent_cached).filled(:bool)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-accounts-summary

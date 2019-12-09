@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
-require 'dry-validation'
+require 'dry-schema'
 
 module Flinks
   module API
     module Statement
-
-      StatementRequestSchema = Dry::Validation.Schema do
-        optional(:accounts_filter).each(:str?)
-        optional(:number_of_statements).included_in?(['MostRecent', 'Months3', 'Months12'])
-        optional(:most_recent).maybe(:bool?)
-        optional(:most_recent_cached).maybe(:bool?)
+      StatementRequestSchema = Dry::Schema.Params do
+        optional(:accounts_filter).array(:string)
+        optional(:number_of_statements).value(included_in?: ['MostRecent', 'Months3', 'Months12'])
+        optional(:most_recent).maybe(:bool)
+        optional(:most_recent_cached).maybe(:bool)
       end
 
       # @see https://sandbox-api.flinks.io/Readme/#get-pdf-statements
