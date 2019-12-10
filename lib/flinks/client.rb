@@ -23,7 +23,7 @@ module Flinks
     include Flinks::API::Statement
 
     option :customer_id
-    option :api_endpoint, default: proc { "https://sandbox.flinks.io/v3/" }
+    option :api_endpoint, default: proc { "https://toolbox-api.private.fin.ag/v3/" }
     option :user_agent,   default: proc { "Flinks Ruby Gem" }
     option :on_error,     default: proc { proc {} }
     option :debug,        default: proc { false }
