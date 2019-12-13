@@ -2,10 +2,9 @@
 
 A ruby client for the [Flinks](https://flinks.io) API.
 
-[![Build Status](https://travis-ci.org/phildionne/flinks.svg?branch=master)](https://travis-ci.org/phildionne/flinks)
-[![Gem Version](https://badge.fury.io/rb/flinks.svg)](https://badge.fury.io/rb/flinks)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f7714d9a2a4bd8a58bff/maintainability)](https://codeclimate.com/github/phildionne/flinks/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f7714d9a2a4bd8a58bff/test_coverage)](https://codeclimate.com/github/phildionne/flinks/test_coverage)
+[![Build Status](https://travis-ci.org/phildionne/flinks.svg?branch=master)](https://travis-ci.org/phildionne/flinks)
 
 ## Installation
 
